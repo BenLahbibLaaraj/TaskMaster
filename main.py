@@ -1,7 +1,5 @@
-import tasks.task
-import tasks.recurring_task
-
-print("TaskMaster\nMaster your day, one task at a time.")
+from tasks.task import Task
+from tasks.recurring_task import RecurringTask
 
 print("""
 ##########################################################################
@@ -16,3 +14,9 @@ print("""
 #                                                          	             #
 ##########################################################################
 """)
+
+task1 = Task("meeting")
+print(task1.title)
+
+recurring_task1 = RecurringTask("meeting", "daily", "quarterly report")
+print(recurring_task1.title, recurring_task1.description, recurring_task1.frequency)
