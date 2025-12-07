@@ -1,3 +1,5 @@
+from db_config.db_config import db_setup
+
 from tasks.task import Task
 from tasks.recurring_task import RecurringTask
 
@@ -15,8 +17,8 @@ print("""
 ##########################################################################
 """)
 
-task1 = Task("meeting")
-print(task1.title)
+def main_menu():
+	connection = db_setup()
 
-recurring_task1 = RecurringTask("meeting", "daily", "quarterly report")
-print(recurring_task1.title, recurring_task1.description, recurring_task1.frequency)
+if __name__ == "__main__":
+    main_menu()
