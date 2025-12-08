@@ -42,7 +42,7 @@ def main_menu():
 			case 4:
 				export()
 			case 5:
-				close_connection()
+				close_connection(connection)
 				menu_loop = False
 
 if __name__ == "__main__":
