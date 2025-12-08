@@ -3,8 +3,8 @@ import os, sqlite3
 DB_PATH = os.getenv("DB_PATH", "db/taskmaster.db")
 
 def db_setup():
-	connection = sqlite3.connect(DB_PATH)
 	if os.path.isfile(DB_PATH) == False:
+		connection = sqlite3.connect(DB_PATH)
 		cursor = connection.cursor()
 		cursor.executescript("""
 				CREATE TABLE tasks(
@@ -18,12 +18,14 @@ def db_setup():
 		    	deadline TEXT,
 		    	frequency TEXT NOT NULL);
 		    	""")
+	else:
+		connection = sqlite3.connect(DB_PATH)
+
 
 	return connection
 
 def close_connection(connection):
 	print("\nExited application.")
-	cursor = connection.cursor()
-	cursor.close()
+	connection.cursor().close()
 	connection.close()
 	print("Database conection closed securely.\n")

@@ -24,11 +24,11 @@ def main_menu():
 
 	menu_loop = True
 	while menu_loop == True:
-		print("\n1	Overview (recurring) tasks")
-		print("2	Add task")
-		print("3	Add recurring task")
-		print("4	Export (recurring) tasks")
-		print("5	Exit TaskMaster")
+		print("1 Overview (recurring) tasks")
+		print("2 Add task")
+		print("3 Add recurring task")
+		print("4 Export (recurring) tasks")
+		print("5 Exit TaskMaster")
 
 		option = int(input("\nChoose an option: "))
 
@@ -36,7 +36,7 @@ def main_menu():
 			case 1:
 				list_tasks()
 			case 2:
-				add_task()
+				add_task(connection)
 			case 3:
 				add_recurring_task()
 			case 4:
