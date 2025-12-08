@@ -20,3 +20,10 @@ def db_setup():
 		    	""")
 
 	return connection
+
+def close_connection():
+	print("Exited application.")
+	cursor = connection.cursor()
+	cursor.close()
+	connection.close()
+	print("Database conection closed securely.")

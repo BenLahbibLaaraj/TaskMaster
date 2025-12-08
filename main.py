@@ -1,7 +1,9 @@
-from db_config.db_config import db_setup
+from config.db_config import db_setup, close_connection
 
-from tasks.task import Task
-from tasks.recurring_task import RecurringTask
+from services.list_tasks import list_tasks
+from services.add_task import add_task
+from services.add_recurring_task import add_recurring_task
+from services.export import export
 
 print("""
 ##########################################################################
@@ -19,6 +21,29 @@ print("""
 
 def main_menu():
 	connection = db_setup()
+
+	menu_loop = True
+	while menu_loop == True:
+		print("\n1	Overview (recurring) tasks")
+		print("2	Add task")
+		print("3	Add recurring task")
+		print("4	Export (recurring) tasks")
+		print("5	Exit TaskMaster")
+
+		option = int(input("\nChoose an option: "))
+
+		match option:
+			case 1:
+				list_tasks()
+			case 2:
+				add_task()
+			case 3:
+				add_recurring_task()
+			case 4:
+				export()
+			case 5:
+				close_connection()
+				menu_loop = False
 
 if __name__ == "__main__":
     main_menu()
