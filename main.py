@@ -38,7 +38,7 @@ def main_menu():
 			case 2:
 				add_task(connection)
 			case 3:
-				add_recurring_task()
+				add_recurring_task(connection)
 			case 4:
 				export()
 			case 5:

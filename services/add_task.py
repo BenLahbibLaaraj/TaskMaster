@@ -1,9 +1,11 @@
 from models.task import Task
 
 def add_task(connection):
-	title = input("Give your task a title: ")
-	description = input("\n(leave blank for no description)\nGive your task a description: ")
-	deadline = input("\n(leave blank for no deadline)\nGive your task a deadline: ")
+	title = ""
+	while title == "":
+		title = input("Give your task a title: ")
+	description = input("\n\n(leave blank for no description)\nGive your task a description: ")
+	deadline = input("\n\n(leave blank for no deadline)\nGive your task a deadline: ")
 
 	added_task = Task(title, description, deadline)
 
