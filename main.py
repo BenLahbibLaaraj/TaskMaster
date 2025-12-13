@@ -34,7 +34,7 @@ def main_menu():
 
 		match option:
 			case 1:
-				list_tasks()
+				list_tasks(connection)
 			case 2:
 				add_task(connection)
 			case 3:
