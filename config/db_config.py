@@ -16,7 +16,7 @@ def db_setup():
 		    	title TEXT NOT NULL,
 		    	description TEXT,
 		    	deadline TEXT,
-		    	frequency TEXT NOT NULL);
+		    	frequency TEXT);
 		    	""")
 	else:
 		connection = sqlite3.connect(DB_PATH)
