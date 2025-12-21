@@ -14,13 +14,16 @@ def list_tasks(connection):
 		cursor.execute(statement + t1)
 		results = cursor.fetchall()
 		print_tasks(list_setting, results)
+		return results
 	elif list_setting == 2:
 		cursor.execute(statement + t2)
 		results = cursor.fetchall()
 		print_tasks(list_setting, results)
+		return results
 	else:
 		cursor.execute(statement + t1)
 		t_results = cursor.fetchall()
 		cursor.execute(statement + t2)
 		rt_results = cursor.fetchall()
 		print_all_tasks(t_results, rt_results)
+		return t_results, rt_results
