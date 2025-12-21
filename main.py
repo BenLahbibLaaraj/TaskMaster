@@ -1,9 +1,9 @@
 from config.db_config import db_setup, close_connection
 
-from services.list_tasks import list_tasks
+from services.manage_tasks.list_tasks import list_tasks
 from services.add_tasks.add_task import add_task
 from services.add_tasks.add_recurring_task import add_recurring_task
-from services.export import export
+from services.manage_tasks.export_tasks import csv_xlsx
 
 print("""
 ##########################################################################
@@ -40,7 +40,7 @@ def main_menu():
 			case 3:
 				add_recurring_task(connection)
 			case 4:
-				export()
+				export_tasks()
 			case 5:
 				close_connection(connection)
 				menu_loop = False
