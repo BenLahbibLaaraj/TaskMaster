@@ -1,8 +1,8 @@
 from config.db_config import db_setup, close_connection
 
 from services.list_tasks import list_tasks
-from services.add_task import add_task
-from services.add_recurring_task import add_recurring_task
+from services.add_tasks.add_task import add_task
+from services.add_tasks.add_recurring_task import add_recurring_task
 from services.export import export
 
 print("""

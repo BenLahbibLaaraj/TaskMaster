@@ -1,11 +1,15 @@
 from models.recurring_task import RecurringTask
+from services.add_tasks.validate_deadline import is_deadline_valid
 
 def add_recurring_task(connection):
 	title = ""
 	while title == "":
 		title = input("Give your recurring task a title: ")
 	description = input("\n\n(leave blank for no description)\nGive your recurring task a description: ")
-	deadline = input("\n\n(leave blank for no deadline and no frequency)\nGive your recurring task a deadline: ")
+	while True:
+		deadline = input("\n\n(leave blank for no deadline)\nGive your task a deadline DD-MM-YYYY: ")
+		if is_deadline_valid(deadline):
+			break
 	if deadline != "":
 		frequency = input("\n\n(leave blank for no frequency)\nGive your recurring task a frequency: ")
 	else:
