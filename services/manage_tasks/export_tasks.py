@@ -37,6 +37,8 @@ def export_csv(filename, tasks):
 def export_tasks(connection):
 	default_folder = "exports/"
 	prefix = default_folder + destination_folder()
+	if not prefix.endswith("/"):
+		prefix += "/"
 	interfix = file_title()
 	suffix = file_type()
 	if prefix == "exports/":
@@ -44,6 +46,8 @@ def export_tasks(connection):
 			prefix = prefix + "csv/"
 		else:
 			prefix = prefix + "xlsx/"
+	if not os.path.exists(prefix):
+		os.makedirs(prefix)
 	task_type = list_tasks(connection)
 	print(task_type)
 	if suffix == 1:
