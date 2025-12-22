@@ -5,7 +5,7 @@ import pandas as pd
 from services.manage_tasks.list_tasks import list_tasks
 
 def destination_folder():
-	return input("\n(leave empty for default folder 'TaskMaster/exports/', end folder structure with '/')\nChoose destination folder: ")
+	return input("\n(leave empty for default folder 'TaskMaster/exports/')\nChoose destination folder: ")
 
 def file_title():
 	return input("\nType filename (without file extension): ")
@@ -39,10 +39,13 @@ def export_xlsx(filename, tasks):
 
 def export_tasks(connection):
 	default_folder = "exports/"
+
 	prefix = default_folder + destination_folder()
 	if not prefix.endswith("/"):
 		prefix += "/"
+
 	interfix = file_title()
+
 	suffix = file_type()
 	if prefix == "exports/":
 		if suffix == 1:
@@ -51,6 +54,7 @@ def export_tasks(connection):
 			prefix = prefix + "xlsx/"
 	if not os.path.exists(prefix):
 		os.makedirs(prefix)
+
 	task_type = list_tasks(connection)
 	if suffix == 1:
 		filename = prefix + interfix + ".csv"
