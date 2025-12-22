@@ -52,10 +52,9 @@ def export_tasks(connection):
 	if not os.path.exists(prefix):
 		os.makedirs(prefix)
 	task_type = list_tasks(connection)
-	print(task_type)
 	if suffix == 1:
 		filename = prefix + interfix + ".csv"
 		export_csv(filename, task_type)
 	else:
-		file = interfix + ".xlsx"
+		filename = prefix + interfix + ".xlsx"
 		export_xlsx(filename, task_type)
