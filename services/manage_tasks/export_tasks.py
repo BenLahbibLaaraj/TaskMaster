@@ -1,5 +1,6 @@
 import os
 import csv
+import pandas as pd
 
 from services.manage_tasks.list_tasks import list_tasks
 
@@ -23,16 +24,18 @@ def export_csv(filename, tasks):
 		writer = csv.writer(file)
 		if check_if_recurring(tasks):
 			writer.writerow(["title", "description", "deadline", "frequency"])
-			writer.writerow([])
-			for task in tasks:
-				writer.writerow(task)
 		else:
 			writer.writerow(["title", "description", "deadline"])
-			writer.writerow([])
-			for task in tasks:
-				writer.writerow(task)
+		writer.writerow([])
+		for task in tasks:
+			writer.writerow(task)
 
-#def export_xlsx(tasks):
+def export_xlsx(filename, tasks):
+	if check_if_recurring(tasks):
+		df = pd.DataFrame(tasks, columns=["title", "description", "deadline", "frequency"])
+	else:
+		df = pd.DataFrame(tasks, columns=["title", "description", "deadline"])
+	df.to_excel(filename, index=False)
 
 def export_tasks(connection):
 	default_folder = "exports/"
@@ -55,4 +58,4 @@ def export_tasks(connection):
 		export_csv(filename, task_type)
 	else:
 		file = interfix + ".xlsx"
-		#export_xlsx(filename, task_type)
+		export_xlsx(filename, task_type)
