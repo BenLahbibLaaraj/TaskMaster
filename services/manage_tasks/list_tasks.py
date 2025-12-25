@@ -26,4 +26,4 @@ def list_tasks(connection):
 		cursor.execute(statement + t2)
 		rt_results = cursor.fetchall()
 		print_all_tasks(t_results, rt_results)
-		return t_results, rt_results
+		return False

@@ -56,6 +56,10 @@ def export_tasks(connection):
 		os.makedirs(prefix)
 
 	task_type = list_tasks(connection)
+	while task_type == False:
+		print("You cannot choose option 3 because tasks and recurring tasks cannot be in a single CSV or XLSX file!\nChoose another option:")
+		task_type = list_tasks(connection)
+
 	if suffix == 1:
 		filename = prefix + interfix + ".csv"
 		export_csv(filename, task_type)
