@@ -10,6 +10,9 @@ def destination_folder():
 def file_title():
 	return input("\nType filename (without file extension): ")
 
+def check_if_filename_compliant(filename):
+	return bool(filename.strip()) and not any(c in filename for c in r'\/:*?"<>|')
+
 def file_type():
 	return int(input("\nChoose file type:\n1 CSV\n2 Excel\n\n"))
 
@@ -44,7 +47,9 @@ def export_tasks(connection):
 	if not prefix.endswith("/"):
 		prefix += "/"
 
-	interfix = file_title()
+	interfix = ""
+	while not check_if_filename_compliant(interfix):
+		interfix = file_title()
 
 	suffix = file_type()
 	if prefix == "exports/":
