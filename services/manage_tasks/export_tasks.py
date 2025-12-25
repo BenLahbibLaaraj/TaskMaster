@@ -11,7 +11,15 @@ def file_title():
 	return input("\nType filename (without file extension): ")
 
 def check_if_filename_compliant(filename):
-	return bool(filename.strip()) and not any(c in filename for c in r'\/:*?"<>|')
+	FORBIDDEN_NAMES = {"CON", "PRN", "AUX", "NUL",
+    "COM1", "COM2", "COM3", "COM4", "COM5", "COM6", "COM7", "COM8", "COM9",
+    "LPT1", "LPT2", "LPT3", "LPT4", "LPT5", "LPT6", "LPT7", "LPT8", "LPT9",}
+	return (
+	    bool(filename.strip())
+	    and len(filename) <= 255
+	    and filename.upper() not in FORBIDDEN_NAMES
+	    and not any(c in filename for c in r'\/:*?"<>|')
+	)
 
 def file_type():
 	return int(input("\nChoose file type:\n1 CSV\n2 Excel\n\n"))
@@ -50,8 +58,8 @@ def export_tasks(connection):
 	interfix = ""
 	while not check_if_filename_compliant(interfix):
 		interfix = file_title()
-	if interfix.endswith(".csv") or interfix.endswith(".xlsx"):
-		interfix = interfix.rsplit(".", 1)[0]
+		if interfix.endswith(".csv") or interfix.endswith(".xlsx"):
+			interfix = interfix.rsplit(".", 1)[0]
 
 	suffix = file_type()
 	if prefix == "exports/":
