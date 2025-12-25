@@ -50,6 +50,8 @@ def export_tasks(connection):
 	interfix = ""
 	while not check_if_filename_compliant(interfix):
 		interfix = file_title()
+	if interfix.endswith(".csv") or interfix.endswith(".xlsx"):
+		interfix = interfix.rsplit(".", 1)[0]
 
 	suffix = file_type()
 	if prefix == "exports/":
