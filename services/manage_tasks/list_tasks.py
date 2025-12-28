@@ -13,11 +13,13 @@ def list_tasks(connection):
 		cursor.execute(statement_t + filter_date)
 		results = cursor.fetchall()
 		print_tasks(connection, list_setting, statement_t, results)
+		
 		return results
 	elif list_setting == 2:
 		cursor.execute(statement_rt + filter_date)
 		results = cursor.fetchall()
 		print_tasks(connection, list_setting, statement_rt, results)
+
 		return results
 	else:
 		cursor.execute(statement_t + filter_date)
