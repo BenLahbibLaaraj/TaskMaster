@@ -10,12 +10,12 @@ def db_setup():
 				CREATE TABLE tasks(
 		    	title TEXT NOT NULL,
 		    	description TEXT,
-		    	deadline TEXT);
+		    	deadline DATE);
 
 				CREATE TABLE recurring_tasks(
 		    	title TEXT NOT NULL,
 		    	description TEXT,
-		    	deadline TEXT,
+		    	deadline DATE,
 		    	frequency TEXT);
 		    	""")
 	else:

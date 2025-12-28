@@ -6,24 +6,24 @@ def list_tasks(connection):
 
 	cursor = connection.cursor()
 
-	t1 = "tasks"
-	t2 = "recurring_tasks"
+	statement_t = "SELECT * FROM tasks"
+	statement_rt = "SELECT * FROM recurring_tasks"
+	filter_date = " ORDER BY deadline DESC"
 
-	statement = "SELECT * FROM "
 	if list_setting == 1:
-		cursor.execute(statement + t1)
+		cursor.execute(statement_t + filter_date)
 		results = cursor.fetchall()
 		print_tasks(list_setting, results)
 		return results
 	elif list_setting == 2:
-		cursor.execute(statement + t2)
+		cursor.execute(statement_rt + filter_date)
 		results = cursor.fetchall()
 		print_tasks(list_setting, results)
 		return results
 	else:
-		cursor.execute(statement + t1)
+		cursor.execute(statement_t + filter_date)
 		t_results = cursor.fetchall()
-		cursor.execute(statement + t2)
+		cursor.execute(statement_rt + filter_date)
 		rt_results = cursor.fetchall()
 		print_all_tasks(t_results, rt_results)
 		return False
