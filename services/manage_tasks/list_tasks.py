@@ -1,5 +1,4 @@
 from services.manage_tasks.print_tasks import print_tasks
-from services.manage_tasks.print_tasks import print_all_tasks
 
 def list_tasks(connection):
 	list_setting = int(input("\nChoose your view:\n1 Only list tasks\n2 Only list recurring tasks\n3 List tasks and recurring tasks\n\n"))
@@ -22,8 +21,11 @@ def list_tasks(connection):
 		return results
 	else:
 		cursor.execute(statement_t + filter_date)
-		t_results = cursor.fetchall()
+		results = cursor.fetchall()
+		print_tasks(1, results)
+
 		cursor.execute(statement_rt + filter_date)
-		rt_results = cursor.fetchall()
-		print_all_tasks(t_results, rt_results)
+		results = cursor.fetchall()
+		print_tasks(2, results)
+
 		return False
