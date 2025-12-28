@@ -24,7 +24,7 @@ def main_menu():
 
 	menu_loop = True
 	while menu_loop == True:
-		print("1 Overview (recurring) tasks")
+		print("\n1 Overview (recurring) tasks")
 		print("2 Add task")
 		print("3 Add recurring task")
 		print("4 Export (recurring) tasks")

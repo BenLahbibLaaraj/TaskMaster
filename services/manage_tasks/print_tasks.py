@@ -1,16 +1,24 @@
-def print_tasks(list_setting, tasks):
+def print_tasks(connection, list_setting, statement, tasks):
+	cursor = connection.cursor()
+
 	print("\n\n(events are shown earliest first)")
 
 	if list_setting == 1:
 		print("Tasks:\n")
 
+		cursor.execute(statement)
+		column_names = [description[0] for description in cursor.description]
+		print("\t".join(column_names))
+
 		for task in tasks:
-			print(f"{task[0]}\t{task[1]}\t{task[2]}")
-		print("\n")
-		
+			print("\t".join(str(value) for value in task))
+
 	if list_setting == 2:
 		print("Recurring tasks:\n")
 
+		cursor.execute(statement)
+		column_names = [description[0] for description in cursor.description]
+		print("\t".join(column_names))
+
 		for task in tasks:
-			print(f"{task[0]}\t{task[1]}\t{task[2]}\t{task[3]}")
-		print("\n")
+			print("\t".join(str(value) for value in task))
