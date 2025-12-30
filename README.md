@@ -6,7 +6,7 @@ This is a task manager, like ToDo or Google Tasks, where you can create tasks an
 
 - Create one-time tasks with optional deadlines and descriptions
 - Create recurring tasks with custom frequencies (e.g., daily, weekly)
-- View all tasks in an organized list, sorted by deadline
+- View all tasks in an organized list, sorted by deadline with **color-coded urgency indicators**
 - Export tasks to CSV or Excel files for backup or further analysis
 - Manage tasks through a simple, text-based menu system
 
@@ -18,9 +18,14 @@ TaskMaster is built with Python and uses SQLite for local data storage, making i
 
 ### 1. Task Management  
 - **Add Tasks**: Create simple tasks with a title, optional description, and optional deadline.  
-- **Add Recurring Tasks**: Create repeating tasks with an additional frequency field (e.g., "every Monday").  
+- **Add Recurring Tasks**: I did not end up implementing this.
 - **List Tasks**: View all tasks, recurring tasks, or both in a clean, tabular format.  
 - **Validate Deadlines**: All deadlines are validated to ensure they are in the correct format (`DD-MM-YYYY`).  
+- **Visual Deadline Indicators**: Deadlines are color-coded based on urgency:
+  - 🔴 **Red**: Past deadlines (overdue)
+  - 🟠 **Orange**: Today's deadline
+  - 🟢 **Green**: Future deadlines
+- This visual system helps users quickly identify task urgency at a glance.
 
 ### 2. Export System  
 - **Export to CSV**: Export tasks or recurring tasks to a CSV file with proper column headers.  
@@ -32,13 +37,4 @@ TaskMaster is built with Python and uses SQLite for local data storage, making i
 - **Automatic Setup**: The database and tables are created automatically on first run.  
 - **Secure Connection**: Database connections are properly closed on exit.  
 - **Environment Support**: Database location can be customized via the `DB_PATH` environment variable.  
-
----
-
-## How to Put the Application into Production  
-
-### 1. Installation  
-Install the required packages from `requirements.txt`:
-
-```bash
-pip install -r requirements.txt
+- **Sample Database**: Sample database can be found in the `db/` folder.
