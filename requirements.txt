@@ -1,0 +1,4 @@
+# TaskMaster
+# Python 3.12.10 tested with these exact versions
+
+pandas==2.2.3
