@@ -35,9 +35,9 @@ def main_menu():
 				list_tasks(connection)
 			case 2:
 				choose_add(connection)
-			case 4:
+			case 3:
 				export_tasks(connection)
-			case 5:
+			case 4:
 				close_connection(connection)
 				menu_loop = False
 
